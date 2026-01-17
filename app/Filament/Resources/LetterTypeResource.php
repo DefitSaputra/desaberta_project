@@ -22,7 +22,7 @@ class LetterTypeResource extends Resource
     
     // --- PERBAIKAN 1: LABEL YANG KONSISTEN & BERSIH ---
     protected static ?string $modelLabel = 'Jenis Surat';
-    protected static ?string $pluralModelLabel = 'Jenis Surat'; // Hapus kata 'Master'
+    protected static ?string $pluralModelLabel = 'Jenis Surat'; 
     protected static ?string $navigationLabel = 'Jenis Surat';
     protected static ?string $navigationGroup = 'Master Data';
     protected static ?int $navigationSort = 1;
@@ -89,7 +89,7 @@ class LetterTypeResource extends Resource
             
             ->filters([])
             ->actions([
-                // --- PERBAIKAN 4: TOMBOL BAHASA INDONESIA ---
+            
                 Tables\Actions\EditAction::make()->label('Ubah'),
                 Tables\Actions\DeleteAction::make()->label('Hapus'),
             ])
