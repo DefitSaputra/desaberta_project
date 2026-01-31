@@ -15,15 +15,25 @@ export default {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                // Palet "Earth Tones" Desa Berta (Wajib Ada!)
+                // Palet Earth Tones Desa Berta
                 berta: {
-                    dark: '#1C290D',    // Background Utama (Hutan Gelap)
-                    olive: '#676F53',   // Aksen Utama (Hijau Zaitun)
-                    sage: '#B3B49A',    // Teks Sekunder (Hijau Pudar)
-                    cream: '#FEFAE0',   // Teks Utama (Krem Terang)
-                    taupe: '#A19379',   // Variasi Coklat
-                    wood: '#736046',    // Aksen Kayu
-                    coffee: '#381D03',  // Coklat Gelap
+                    dark: '#1C290D',
+                    olive: '#676F53',
+                    sage: '#B3B49A',
+                    cream: '#FEFAE0',
+                    taupe: '#A19379',
+                    wood: '#736046',
+                    coffee: '#381D03',
+                }
+            },
+            // TAMBAHKAN BAGIAN INI UNTUK ANIMASI SLIDER
+            animation: {
+                'fade-in-up': 'fadeInUp 1s ease-out forwards',
+            },
+            keyframes: {
+                fadeInUp: {
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
                 }
             }
         },
