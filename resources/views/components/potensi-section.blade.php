@@ -6,7 +6,7 @@
             'category' => 'Ekonomi Kreatif',
             'desc' => 'Warisan leluhur anyaman bambu yang disulap menjadi tas dan wadah estetis bernilai ekonomi tinggi.',
             'image' => 'img/tas_anyaman.jpeg', 
-            'grid' => 'md:col-span-2 md:row-span-2', // Kartu Besar Utama
+            'grid' => 'md:col-span-2 md:row-span-2',
             'icon' => '👜'
         ],
         [

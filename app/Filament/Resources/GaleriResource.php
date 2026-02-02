@@ -19,11 +19,21 @@ class GaleriResource extends Resource
     // Ikon di menu sidebar (bisa diganti heroicon lain)
     protected static ?string $navigationIcon = 'heroicon-o-photo';
     
-    // Label di Menu
+    // Label di Sidebar Menu
     protected static ?string $navigationLabel = 'Galeri Desa';
     
-    // Urutan menu
+    // Urutan menu di sidebar
     protected static ?int $navigationSort = 1;
+
+    // --- PENGATURAN LABEL DIKSI (Agar tidak "Create Galeri" tapi "Buat Galeri") ---
+    
+    // Label untuk satu item (Singular) -> Misal: "Galeri"
+    protected static ?string $modelLabel = 'Galeri';
+
+    // Label untuk banyak item (Plural) -> Misal: "Galeri Desa"
+    protected static ?string $pluralModelLabel = 'Galeri Desa';
+
+    // -------------------------------------------------------------------------------
 
     public static function form(Form $form): Form
     {

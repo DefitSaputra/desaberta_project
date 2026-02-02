@@ -31,9 +31,11 @@
 
     @include('components.potensi-section')
 
+    @include('components.berita-section')
+
     @include('components.galeri-section')
 
     @include('components.footer')
-    
+
 </body>
 </html>

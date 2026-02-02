@@ -27,7 +27,7 @@
                     Profil <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-berta-olive transition-all group-hover:w-full {{ Request::routeIs('profil.desa') ? 'w-full' : '' }}"></span>
                 </a>
 
-                <a href="{{ url('/') }}#statistik" class="text-sm font-medium text-berta-sage hover:text-white transition relative group">
+                <a href="{{ route('data.desa') }}" class="text-sm font-medium text-berta-sage hover:text-white transition relative group">
                     Data <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-berta-olive transition-all group-hover:w-full"></span>
                 </a>
 

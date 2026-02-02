@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Filament\Resources\GaleriResource\Pages;
+namespace App\Filament\Resources\BeritaResource\Pages;
 
-use App\Filament\Resources\GaleriResource;
+use App\Filament\Resources\BeritaResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditGaleri extends EditRecord
+class EditBerita extends EditRecord
 {
-    protected static string $resource = GaleriResource::class;
+    protected static string $resource = BeritaResource::class;
 
-    // 1. Mengubah Judul Halaman
     public function getTitle(): string 
     {
-        return 'Ubah Data Galeri';
+        return 'Ubah Berita';
     }
 
     protected function getHeaderActions(): array
@@ -23,7 +22,6 @@ class EditGaleri extends EditRecord
         ];
     }
 
-    // 2. Redirect setelah simpan (Balik ke daftar)
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

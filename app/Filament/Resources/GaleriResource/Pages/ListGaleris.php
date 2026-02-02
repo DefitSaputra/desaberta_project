@@ -10,10 +10,18 @@ class ListGaleris extends ListRecords
 {
     protected static string $resource = GaleriResource::class;
 
+    // 1. Mengubah Judul Halaman (Paling Atas)
+    public function getTitle(): string 
+    {
+        return 'Daftar Galeri Desa';
+    }
+
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            // 2. Mengubah Label Tombol Tambah
+            Actions\CreateAction::make()
+                ->label('Tambah Galeri Baru'),
         ];
     }
 }
