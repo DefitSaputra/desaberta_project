@@ -6,7 +6,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {{-- Header Section --}}
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll" data-anim-delay="0">
             <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block">Dokumentasi</span>
             <h2 class="text-3xl md:text-5xl font-bold text-berta-cream mb-4 font-playfair">Galeri Kegiatan</h2>
             <div class="w-20 h-1.5 bg-gradient-to-r from-berta-olive to-berta-wood mx-auto rounded-full"></div>
@@ -18,7 +18,7 @@
             
             @forelse($galeri as $item)
             {{-- Mengubah Div menjadi Anchor (Link) agar bisa diklik --}}
-            <a href="{{ route('galeri.index') }}" class="block break-inside-avoid group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-berta-olive/20 transition-all duration-500 cursor-pointer">
+            <a href="{{ route('galeri.index') }}" class="block break-inside-avoid group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-berta-olive/20 transition-all duration-500 cursor-pointer animate-on-scroll" data-anim-delay="{{ $loop->index * 80 }}">
                 
                 {{-- Gambar (Tanpa Filter Grayscale) --}}
                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" 

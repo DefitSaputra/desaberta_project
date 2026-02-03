@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Add middleware that restricts access to /admin to only those coming via the footer entry point
+        $this->app->make(\Illuminate\Routing\Router::class)->pushMiddlewareToGroup('web', \App\Http\Middleware\RequireFooterAdminAccess::class);
     }
 }

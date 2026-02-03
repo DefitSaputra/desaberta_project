@@ -1,4 +1,4 @@
-<section id="profil" class="py-24 bg-berta-dark relative overflow-hidden" 
+<section id="profil" class="py-24 bg-berta-dark relative overflow-hidden animate-on-scroll" data-anim-delay="0" 
          x-data="{
              activeSlide: 0,
              slides: [
@@ -36,7 +36,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <div class="space-y-8 relative">
-                <div>
+                <div class="animate-on-load" data-anim-delay="40">
                     <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block animate-pulse">Tentang Kami</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-berta-cream mb-4 leading-tight">
                         Mengenal Lebih Dekat <br>
@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            <div class="relative group h-[500px]">
+            <div class="relative group h-[500px] animate-on-load" data-anim-delay="120">
                 <div class="absolute inset-0 bg-gradient-to-tr from-berta-olive to-berta-wood rounded-[2rem] transform rotate-3 opacity-20 group-hover:rotate-6 transition duration-700 animate-pulse-slow"></div>
                 
                 <div class="relative rounded-[2rem] overflow-hidden border border-berta-sage/10 shadow-2xl h-full z-10">

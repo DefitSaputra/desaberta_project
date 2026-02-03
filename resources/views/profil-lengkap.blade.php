@@ -3,45 +3,47 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profil Lengkap - Desa Berta</title>
+    <title>Profil Wilayah & Sejarah - Desa Berta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        .font-playfair { font-family: 'Playfair Display', serif; }
-    </style>
 </head>
-<body class="antialiased bg-berta-dark text-berta-cream font-sans selection:bg-berta-olive selection:text-white">
+<body class="antialiased bg-berta-dark text-berta-cream font-sans selection:bg-berta-olive selection:text-white overflow-x-hidden">
 
     @include('components.navbar')
 
-    <div class="relative h-[80vh] overflow-hidden flex items-center justify-center">
+    {{-- HERO SECTION --}}
+    <div class="relative h-[60vh] overflow-hidden flex items-center justify-center">
         <div class="absolute inset-0">
-            <img src="{{ asset('img/bgbaru.jpeg') }}" class="w-full h-full object-cover fixed top-0 left-0 -z-10 brightness-50" alt="Desa Berta">
-             <div class="absolute inset-0 bg-gradient-to-b from-berta-dark/30 via-berta-dark/10 to-berta-dark"></div>
+            {{-- Background Header --}}
+            <img src="{{ asset('img/pw.jpg') }}" class="w-full h-full object-cover fixed top-0 left-0 -z-10 brightness-50" alt="Desa Berta">
+            <div class="absolute inset-0 bg-gradient-to-b from-berta-dark/60 via-berta-dark/20 to-berta-dark"></div>
         </div>
         
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <span class="inline-block py-1.5 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold tracking-[0.2em] uppercase mb-6 text-berta-cream animate-fade-in-down">
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
+            <span class="inline-block py-1.5 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold tracking-[0.2em] uppercase mb-6 text-berta-cream opacity-0 animate-fade-in-down">
                 Profil Wilayah
             </span>
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl font-playfair leading-tight animate-fade-in-up">
-                Jantung Budaya & <br> <span class="text-berta-olive italic">Potensi Alam</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl font-playfair leading-tight opacity-0 animate-fade-in-up delay-100">
+                Identitas & Jejak Langkah <br> <span class="text-berta-olive italic">Desa Berta</span>
             </h1>
-            <p class="text-xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in-up delay-200">
-                Menjelajahi keindahan geografis, kearifan lokal, dan semangat kemandirian masyarakat Desa Berta, Kecamatan Susukan.
+            <p class="text-lg text-white/90 max-w-2xl mx-auto font-light leading-relaxed opacity-0 animate-fade-in-up delay-200">
+                Menjelajahi keindahan geografis, batas wilayah, dan akar sejarah panjang dari masa Kerajaan Mataram Kuno hingga kini.
             </p>
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-32 relative z-10 bg-berta-dark rounded-t-[3rem] -mt-20 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.5)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-32 relative z-10 bg-berta-dark rounded-t-[3rem] -mt-20 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.5)]">
 
+        {{-- 1. GAMBARAN UMUM (REDESIGNED WITH profildesa.jpg) --}}
         <section class="relative">
             <div class="absolute -top-20 -left-20 w-64 h-64 bg-berta-olive/10 rounded-full blur-[80px] pointer-events-none"></div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                <div class="lg:col-span-7 space-y-8 text-berta-taupe/90 text-lg leading-relaxed text-justify">
+                
+                {{-- KOLOM KIRI: TEKS DESKRIPSI --}}
+                <div class="lg:col-span-7 space-y-8 text-berta-taupe/90 text-lg leading-relaxed text-justify scroll-element opacity-0 translate-y-8">
                     <div class="flex items-center gap-4 mb-2">
                         <div class="h-1 w-12 bg-berta-olive rounded-full"></div>
                         <span class="text-berta-olive font-bold tracking-widest uppercase text-sm">Gambaran Umum</span>
@@ -51,9 +53,10 @@
                         <strong class="text-berta-cream">Desa Berta</strong> bukan sekadar wilayah administratif, melainkan sebuah ekosistem kehidupan yang harmonis. Terbentang seluas <strong>478,450 Hektar</strong>, desa ini memadukan lanskap dataran rendah yang subur untuk pertanian dengan kontur perbukitan yang sejuk dan asri.
                     </p>
                     <p>
-                        Secara administratif, denyut nadi kehidupan desa tersebar di <strong class="text-berta-cream">5 Dusun</strong> utama. Kelima dusun ini saling terhubung dalam semangat gotong royong yang menjadi ciri khas masyarakat kami:
+                        Secara administratif, denyut nadi kehidupan desa tersebar di <strong class="text-berta-cream">5 Dusun</strong> utama. Kelima dusun ini saling terhubung dalam semangat gotong royong:
                     </p>
                     
+                    {{-- Daftar Dusun --}}
                     <div class="grid grid-cols-2 gap-4 mt-6">
                         <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:bg-white/10 transition duration-300">
                             <span class="w-8 h-8 flex items-center justify-center bg-berta-olive/20 rounded-full text-berta-olive font-bold text-xs">01</span>
@@ -78,219 +81,244 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 lg:sticky lg:top-32">
-                    <div class="bg-gradient-to-br from-berta-wood/10 to-berta-dark p-1 rounded-3xl">
-                        <div class="bg-berta-dark/90 backdrop-blur-xl rounded-[1.3rem] p-8 border border-berta-sage/10 relative overflow-hidden">
-                            <div class="absolute -bottom-10 -right-10 opacity-5 pointer-events-none">
-                                <svg class="w-64 h-64 text-berta-cream" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
-                            </div>
+                {{-- KOLOM KANAN: FOTO UTAMA & BATAS WILAYAH --}}
+                <div class="lg:col-span-5 lg:sticky lg:top-32 relative scroll-element opacity-0 translate-y-8 transition-delay-200">
+                    
+                    {{-- [BARU] FOTO profildesa.jpg --}}
+                    <div class="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 group mb-[-4rem] z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-berta-dark via-transparent to-transparent opacity-80 z-10"></div>
+                        <img src="{{ asset('img/profildesa.jpg') }}" alt="Suasana Desa Berta" class="w-full h-[500px] object-cover transform group-hover:scale-105 transition duration-1000 ease-in-out">
+                    </div>
+
+                    {{-- KARTU BATAS WILAYAH (OVERLAY) --}}
+                    <div class="relative z-10 mx-4">
+                        <div class="bg-berta-dark/80 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 shadow-lg">
+                            <h3 class="text-xl font-bold text-berta-cream mb-6 flex items-center gap-3">
+                                <span class="w-8 h-[2px] bg-berta-olive"></span> Batas Administratif
+                            </h3>
                             
-                            <h3 class="text-xl font-bold text-berta-cream mb-8 border-b border-berta-sage/10 pb-4">Batas Administratif</h3>
-                            
-                            <div class="space-y-6 relative z-10">
-                                <div class="group flex items-start gap-4 transition duration-300">
-                                    <div class="w-10 h-10 rounded-full bg-berta-olive/10 flex items-center justify-center text-berta-olive font-bold text-sm border border-berta-olive/20 group-hover:bg-berta-olive group-hover:text-white transition">U</div>
+                            <div class="space-y-5">
+                                {{-- Utara --}}
+                                <div class="flex items-center gap-4 group">
+                                    <div class="w-10 h-10 rounded-full bg-berta-olive/10 flex items-center justify-center text-berta-olive font-bold text-sm border border-berta-olive/20 group-hover:bg-berta-olive group-hover:text-white transition-all duration-300">U</div>
                                     <div>
-                                        <h4 class="text-xs font-bold text-berta-sage uppercase tracking-wider mb-1">Sebelah Utara</h4>
-                                        <p class="text-berta-cream font-medium">Kecamatan Purwareja Klampok</p>
+                                        <p class="text-xs font-bold text-berta-sage uppercase tracking-wider">Sebelah Utara</p>
+                                        <p class="text-berta-cream font-medium">Kec. Purwareja Klampok</p>
                                     </div>
                                 </div>
-                                <div class="group flex items-start gap-4 transition duration-300">
-                                    <div class="w-10 h-10 rounded-full bg-berta-wood/10 flex items-center justify-center text-berta-wood font-bold text-sm border border-berta-wood/20 group-hover:bg-berta-wood group-hover:text-white transition">T</div>
+                                {{-- Timur --}}
+                                <div class="flex items-center gap-4 group">
+                                    <div class="w-10 h-10 rounded-full bg-berta-wood/10 flex items-center justify-center text-berta-wood font-bold text-sm border border-berta-wood/20 group-hover:bg-berta-wood group-hover:text-white transition-all duration-300">T</div>
                                     <div>
-                                        <h4 class="text-xs font-bold text-berta-sage uppercase tracking-wider mb-1">Sebelah Timur</h4>
-                                        <p class="text-berta-cream font-medium">Desa Sirkandi <span class="text-berta-sage text-xs font-normal">(Kec. Purwareja Klampok)</span></p>
+                                        <p class="text-xs font-bold text-berta-sage uppercase tracking-wider">Sebelah Timur</p>
+                                        <p class="text-berta-cream font-medium">Desa Sirkandi</p>
                                     </div>
                                 </div>
-                                <div class="group flex items-start gap-4 transition duration-300">
-                                    <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 font-bold text-sm border border-blue-500/20 group-hover:bg-blue-500 group-hover:text-white transition">B</div>
+                                {{-- Selatan/Barat --}}
+                                <div class="flex items-center gap-4 group">
+                                    <div class="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 font-bold text-sm border border-blue-500/20 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">S/B</div>
                                     <div>
-                                        <h4 class="text-xs font-bold text-berta-sage uppercase tracking-wider mb-1">Sebelah Barat</h4>
-                                        <p class="text-berta-cream font-medium">Desa Derik & Desa Karangjati</p>
+                                        <p class="text-xs font-bold text-berta-sage uppercase tracking-wider">Selatan & Barat</p>
+                                        <p class="text-berta-cream font-medium">Desa Derik & Karangjati</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
+        {{-- 2. VISI & MISI SECTION --}}
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {{-- Visi Card --}}
+            <div class="lg:col-span-5 scroll-element opacity-0 translate-y-8">
+                <div class="bg-gradient-to-br from-berta-olive to-berta-dark p-1 rounded-3xl h-full shadow-2xl">
+                    <div class="bg-berta-dark rounded-[1.3rem] p-10 h-full flex flex-col justify-center items-center text-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
+                        <h2 class="text-3xl font-bold text-berta-cream font-playfair mb-6 relative z-10">Visi Desa</h2>
+                        <div class="w-16 h-1 bg-berta-olive rounded-full mb-8 relative z-10"></div>
+                        <p class="text-xl text-white font-serif italic leading-relaxed relative z-10">
+                            “Terwujudnya tata kelola pemerintahan desa yang efektif dan akuntabel, serta terciptanya masyarakat yang harmonis, dinamis, dan sejahtera.”
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Misi List --}}
+            <div class="lg:col-span-7 flex flex-col justify-center scroll-element opacity-0 translate-y-8 transition-delay-200">
+                <h3 class="text-2xl font-bold text-berta-cream font-playfair mb-8 flex items-center gap-4">
+                    <span class="w-8 h-[2px] bg-berta-wood"></span> Misi Pembangunan
+                </h3>
+                <div class="space-y-4">
+                    @php
+                        $misi = [
+                            "Melakukan perbaikan kinerja aparatur pemerintah desa, guna peningkatan kualitas pelayanan publik yang lebih baik.",
+                            "Menyelenggarakan tata pemerintahan yang bersih, jujur, dan berwibawa dengan mengutamakan peran serta masyarakat.",
+                            "Meningkatkan derajat ekonomi masyarakat melalui kegiatan ekonomi produktif.",
+                            "Meningkatkan derajat kesehatan masyarakat.",
+                            "Melestarikan adat dan mengembangkan seni budaya lokal."
+                        ];
+                    @endphp
+                    @foreach($misi as $index => $item)
+                    <div class="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition duration-300 border border-transparent hover:border-white/5 group">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-berta-wood/20 text-berta-wood font-bold flex items-center justify-center group-hover:bg-berta-wood group-hover:text-white transition">
+                            {{ $index + 1 }}
+                        </span>
+                        <p class="text-berta-taupe group-hover:text-berta-cream transition">{{ $item }}</p>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
+        {{-- 3. SEJARAH & ASAL USUL --}}
         <section class="relative">
-            <div class="absolute inset-0 bg-white/5 rounded-[3rem] transform -rotate-1 scale-[1.02] opacity-50"></div>
-            <div class="bg-gradient-to-b from-white/5 to-transparent rounded-[3rem] p-8 md:p-16 border border-berta-sage/10 relative overflow-hidden backdrop-blur-sm">
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div>
-                        <h3 class="text-3xl font-bold text-berta-cream mb-8 font-playfair">Demografi Penduduk</h3>
-                        
-                        <div class="bg-berta-dark p-8 rounded-3xl border border-berta-sage/10 flex items-center justify-between mb-8 shadow-lg">
-                            <div>
-                                <span class="text-berta-sage text-sm font-bold uppercase tracking-widest block mb-2">Total Populasi</span>
-                                <span class="text-5xl font-bold text-white tracking-tight">4.016 <span class="text-lg text-berta-olive font-normal">Jiwa</span></span>
-                            </div>
-                            <div class="w-16 h-16 bg-berta-olive/20 rounded-full flex items-center justify-center text-3xl">👥</div>
-                        </div>
+            <div class="absolute inset-0 bg-berta-sage/5 -mx-4 sm:-mx-6 lg:-mx-8 rounded-[3rem] -z-10"></div>
+            
+            <div class="text-center mb-16 pt-12 scroll-element opacity-0 translate-y-8">
+                <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block">Napak Tilas</span>
+                <h2 class="text-4xl font-bold text-berta-cream font-playfair">Sejarah & Asal Usul</h2>
+            </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-berta-dark p-6 rounded-3xl border border-berta-sage/10 text-center hover:border-blue-500/30 transition duration-300">
-                                <div class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-400 text-xl mx-auto mb-3">♂</div>
-                                <span class="block text-2xl font-bold text-white">2.005</span>
-                                <span class="text-xs text-berta-sage uppercase tracking-wider">Laki-Laki</span>
-                            </div>
-                            <div class="bg-berta-dark p-6 rounded-3xl border border-berta-sage/10 text-center hover:border-pink-500/30 transition duration-300">
-                                <div class="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center text-pink-400 text-xl mx-auto mb-3">♀</div>
-                                <span class="block text-2xl font-bold text-white">1.961</span>
-                                <span class="text-xs text-berta-sage uppercase tracking-wider">Perempuan</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-3xl font-bold text-berta-cream mb-8 font-playfair">Tingkat Pendidikan</h3>
-                        <div class="space-y-8 bg-berta-dark/50 p-8 rounded-3xl border border-berta-sage/10">
-                            
-                            <div class="group">
-                                <div class="flex justify-between items-end mb-2">
-                                    <span class="text-berta-cream font-medium">SD / Sederajat</span>
-                                    <span class="text-2xl font-bold text-berta-olive">38%</span>
-                                </div>
-                                <div class="w-full bg-black/40 rounded-full h-3 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-berta-olive to-berta-sage h-full rounded-full w-0 animate-progress" style="width: 38%"></div>
-                                </div>
-                            </div>
-
-                            <div class="group">
-                                <div class="flex justify-between items-end mb-2">
-                                    <span class="text-berta-cream font-medium">SMP / Sederajat</span>
-                                    <span class="text-2xl font-bold text-berta-wood">30%</span>
-                                </div>
-                                <div class="w-full bg-black/40 rounded-full h-3 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-berta-wood to-yellow-600 h-full rounded-full w-0 animate-progress" style="width: 30%; animation-delay: 0.2s;"></div>
-                                </div>
-                            </div>
-
-                            <div class="group">
-                                <div class="flex justify-between items-end mb-2">
-                                    <span class="text-berta-cream font-medium">SMA / SMK</span>
-                                    <span class="text-2xl font-bold text-blue-400">22%</span>
-                                </div>
-                                <div class="w-full bg-black/40 rounded-full h-3 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-600 to-blue-400 h-full rounded-full w-0 animate-progress" style="width: 22%; animation-delay: 0.4s;"></div>
-                                </div>
-                            </div>
-
-                            <div class="group">
-                                <div class="flex justify-between items-end mb-2">
-                                    <span class="text-berta-cream font-medium">Sarjana (S1)</span>
-                                    <span class="text-2xl font-bold text-purple-400">10%</span>
-                                </div>
-                                <div class="w-full bg-black/40 rounded-full h-3 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-purple-600 to-purple-400 h-full rounded-full w-0 animate-progress" style="width: 10%; animation-delay: 0.6s;"></div>
-                                </div>
-                            </div>
-
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-berta-taupe/90 text-lg leading-relaxed text-justify scroll-element opacity-0 translate-y-8">
+                    <p>
+                        Menurut cerita yang dijelaskan oleh <strong>Den Juneng</strong>, seorang ahli sejarah dan tokoh Padepokan Carang Seket, Desa Berta awalnya dikenal sebagai <strong class="text-berta-cream">Desa Paluh Amba</strong>. Nama ini tercatat dalam Babad Gumelem dan manuskrip-manuskrip lama yang diwariskan secara lisan maupun tulisan.
+                    </p>
+                    <p>
+                        Perubahan nama dari Paluh Amba menjadi Desa Berta diperkirakan terjadi pada masa <strong>Kerajaan Mataram Kuno</strong>. Nama baru ini diduga kuat berkaitan dengan dan diambil dari nama tokoh wanita berpengaruh bernama <strong>Ny Berta</strong>, yang hingga kini dihormati oleh warga setempat.
+                    </p>
+                </div>
+                <div class="relative scroll-element opacity-0 translate-y-8 transition-delay-200">
+                    <div class="absolute inset-0 bg-berta-wood/20 rounded-2xl transform rotate-3"></div>
+                    <img src="{{ asset('img/oldbalaidesa.jpeg') }}" alt="Sejarah Desa" class="relative rounded-2xl shadow-2xl w-full object-cover grayscale hover:grayscale-0 transition duration-700">
+                    <div class="absolute bottom-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-lg border-l-4 border-berta-wood">
+                        <span class="text-white text-sm font-medium">Ilustrasi Balai Desa Lama</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        {{-- 4. TOKOH LEGENDARIS --}}
         <section>
-            <div class="text-center mb-16 max-w-3xl mx-auto">
-                <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block">Kearifan Lokal</span>
-                <h2 class="text-4xl font-bold text-berta-cream mb-6 font-playfair">Harmoni Ekonomi & Budaya</h2>
-                <p class="text-berta-sage text-lg">Sinergi antara geliat ekonomi kerakyatan yang mandiri dan pelestarian budaya leluhur yang tak lekang oleh waktu.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="group relative overflow-hidden rounded-[2.5rem]">
-                    <div class="absolute inset-0 bg-berta-wood/20 group-hover:bg-berta-wood/30 transition duration-500"></div>
-                    <img src="https://images.unsplash.com/photo-1595837946626-72944b9347d4?q=80&w=2070&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20 group-hover:scale-110 transition duration-700" alt="Ekonomi">
-                    
-                    <div class="relative p-10 h-full border border-berta-sage/10 rounded-[2.5rem] flex flex-col justify-between min-h-[400px]">
-                        <div>
-                            <div class="w-16 h-16 bg-berta-wood rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg shadow-berta-wood/20">🌱</div>
-                            <h3 class="text-2xl font-bold text-berta-cream mb-4">Ekonomi & UMKM</h3>
-                            <p class="text-berta-taupe leading-relaxed mb-6">
-                                Tulang punggung perekonomian desa ditopang oleh sektor pertanian dan industri kreatif rumahan yang terus berkembang.
-                            </p>
-                        </div>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-berta-cream/90 bg-black/20 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition">
-                                <span class="text-berta-wood">●</span> Kerajinan Anyaman Piti
-                            </li>
-                            <li class="flex items-center gap-3 text-berta-cream/90 bg-black/20 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition">
-                                <span class="text-berta-wood">●</span> Gula Kelapa Murni (Kristal/Cetak)
-                            </li>
-                            <li class="flex items-center gap-3 text-berta-cream/90 bg-black/20 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition">
-                                <span class="text-berta-wood">●</span> Industri Mebeler & Makanan Ringan
-                            </li>
-                        </ul>
+            <h2 class="text-3xl font-bold text-berta-cream font-playfair mb-10 text-center scroll-element opacity-0 translate-y-8">Empat Tokoh Legendaris</h2>
+            <p class="text-center text-berta-sage mb-12 max-w-2xl mx-auto scroll-element opacity-0 translate-y-8">Dalam tradisi sejarah lokal, terdapat empat tokoh besar yang dianggap sebagai cikal bakal keberadaan Desa Berta.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {{-- Card 1 --}}
+                <div class="bg-white/5 rounded-2xl p-6 border border-white/5 hover:bg-white/10 hover:-translate-y-2 transition duration-300 group scroll-element opacity-0 translate-y-8">
+                    <div class="w-14 h-14 bg-berta-olive/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-berta-olive transition">
+                        <span class="text-2xl">🗻</span>
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Resi Tunggul Manik</h3>
+                    <p class="text-sm text-berta-taupe leading-relaxed">
+                        Dipercaya sebagai tokoh berwibawa yang dikaitkan dengan <strong>Maha Patih Gajah Mada</strong>. Makam beliau berada di puncak wilayah Paluh Amba.
+                    </p>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-[2.5rem]">
-                    <div class="absolute inset-0 bg-berta-olive/20 group-hover:bg-berta-olive/30 transition duration-500"></div>
-                    <img src="https://images.unsplash.com/photo-1516820208784-270b250306e3?q=80&w=1969&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-20 group-hover:scale-110 transition duration-700" alt="Budaya">
-                    
-                    <div class="relative p-10 h-full border border-berta-sage/10 rounded-[2.5rem] flex flex-col justify-between min-h-[400px]">
-                        <div>
-                            <div class="w-16 h-16 bg-berta-olive rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-lg shadow-berta-olive/20">🎭</div>
-                            <h3 class="text-2xl font-bold text-berta-cream mb-4">Sosial Budaya</h3>
-                            <p class="text-berta-taupe leading-relaxed mb-6">
-                                Warisan leluhur yang dijaga dengan penuh khidmat sebagai wujud syukur kepada Sang Pencipta dan perekat tali persaudaraan.
-                            </p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="text-center p-4 bg-black/20 rounded-2xl border border-white/5 hover:bg-white/10 transition group/item">
-                                <span class="block text-2xl mb-1 group-hover/item:scale-125 transition duration-300">🎉</span>
-                                <span class="text-sm font-bold text-berta-cream">Tradisi Suran</span>
-                            </div>
-                            <div class="text-center p-4 bg-black/20 rounded-2xl border border-white/5 hover:bg-white/10 transition group/item">
-                                <span class="block text-2xl mb-1 group-hover/item:scale-125 transition duration-300">🙏</span>
-                                <span class="text-sm font-bold text-berta-cream">Sadran</span>
-                            </div>
-                            <div class="text-center p-4 bg-black/20 rounded-2xl border border-white/5 hover:bg-white/10 transition group/item">
-                                <span class="block text-2xl mb-1 group-hover/item:scale-125 transition duration-300">🌾</span>
-                                <span class="text-sm font-bold text-berta-cream">Sedekah Bumi</span>
-                            </div>
-                            <div class="text-center p-4 bg-black/20 rounded-2xl border border-white/5 hover:bg-white/10 transition group/item">
-                                <span class="block text-2xl mb-1 group-hover/item:scale-125 transition duration-300">🍛</span>
-                                <span class="text-sm font-bold text-berta-cream">Tumpengan</span>
-                            </div>
-                        </div>
+                {{-- Card 2 --}}
+                <div class="bg-white/5 rounded-2xl p-6 border border-white/5 hover:bg-white/10 hover:-translate-y-2 transition duration-300 group scroll-element opacity-0 translate-y-8 transition-delay-200">
+                    <div class="w-14 h-14 bg-berta-wood/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-berta-wood transition">
+                        <span class="text-2xl">👑</span>
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Eyang Wijaya Murti</h3>
+                    <p class="text-sm text-berta-taupe leading-relaxed">
+                        Seorang lurah di akhir era <strong>Majapahit</strong> hingga Mataram. Beliau dimakamkan di area situs Jambe Sewu.
+                    </p>
+                </div>
+
+                {{-- Card 3 --}}
+                <div class="bg-white/5 rounded-2xl p-6 border border-white/5 hover:bg-white/10 hover:-translate-y-2 transition duration-300 group scroll-element opacity-0 translate-y-8 transition-delay-300">
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500 transition">
+                        <span class="text-2xl">⚓</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ki Baron Sekeber</h3>
+                    <p class="text-sm text-berta-taupe leading-relaxed">
+                        Saudagar kaya asal <strong>Spanyol</strong> (Ki Selo Kerti). Legenda menyebutkan konfrontasinya dengan Panembahan Senopati.
+                    </p>
+                </div>
+
+                {{-- Card 4 --}}
+                <div class="bg-white/5 rounded-2xl p-6 border border-white/5 hover:bg-white/10 hover:-translate-y-2 transition duration-300 group scroll-element opacity-0 translate-y-8 transition-delay-400">
+                    <div class="w-14 h-14 bg-pink-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-pink-500 transition">
+                        <span class="text-2xl">🌺</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ny Berta</h3>
+                    <p class="text-sm text-berta-taupe leading-relaxed">
+                        Tokoh wanita yang namanya diabadikan menjadi <strong>nama desa</strong>. Makam beliau berada di dekat Makam Bolang di situs Jambe Sewu.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <div class="relative rounded-3xl overflow-hidden p-1">
-            <div class="absolute inset-0 bg-gradient-to-r from-berta-olive via-berta-wood to-berta-olive animate-gradient-x"></div>
-            <div class="relative bg-berta-dark rounded-[1.3rem] p-10 md:p-16 text-center">
-                <h3 class="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-berta-cream to-white font-playfair">Menuju Desa Digital yang Mandiri</h3>
-                <blockquote class="text-xl text-berta-sage/90 max-w-4xl mx-auto italic font-light leading-relaxed">
-                    "Perkembangan teknologi yang pesat dimanfaatkan oleh Pemerintah Desa Berta sebagai sarana promosi potensi desa, produk unggulan UMKM, hingga destinasi wisata. Website ini adalah langkah nyata kami untuk mendekatkan pelayanan dan informasi kepada seluruh masyarakat."
-                </blockquote>
-                <div class="mt-8 flex justify-center">
-                    <img src="{{ asset('img/logo.png') }}" class="h-16 w-auto opacity-50 grayscale hover:grayscale-0 transition duration-500" alt="Logo">
+        {{-- 5. ADMINISTRASI & WARISAN --}}
+        <section class="bg-berta-dark border border-berta-sage/20 rounded-3xl p-8 md:p-12 scroll-element opacity-0 translate-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <div class="pr-0 md:pr-12">
+                    <h3 class="text-2xl font-bold text-berta-cream font-playfair mb-4">Perubahan Administrasi</h3>
+                    <p class="text-berta-taupe leading-relaxed text-justify">
+                        Dalam sejarahnya, di masa pemerintahan Kadipaten Merden, terdapat wilayah bernama <strong>Kali Bangkang</strong> yang dihapus dari arsip administratif karena dianggap sering membangkang. Sebagian wilayahnya kemudian disatukan dengan Desa Berta dan Desa Karangjati. Setelah Kadipaten Merden dipindahkan ke Cilacap, wilayah Berta menjadi bagian dari tanah perdikan <strong>Kademangan Gumelem</strong>.
+                    </p>
+                </div>
+                <div class="pt-8 md:pt-0 pl-0 md:pl-12">
+                    <h3 class="text-2xl font-bold text-berta-cream font-playfair mb-4">Warisan Budaya</h3>
+                    <p class="text-berta-taupe leading-relaxed text-justify">
+                        Hingga kini, situs-situs bersejarah seperti makam Resi Tunggul Manik, Eyang Wijaya Murti, Ki Baron Sekeber, dan Ny Berta di <strong>Jambe Sewu</strong> menjadi tempat kunjungan dan ziarah bagi masyarakat lokal dan peziarah luar. Keberadaan situs-situs ini menjadi bukti kuat kedalaman sejarah dan akar budaya Desa Berta yang tetap hidup dalam tradisi masyarakatnya.
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
 
     </div>
 
     @include('components.footer')
 
+    {{-- Script untuk Animasi Scroll --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Muncul ketika 10% elemen terlihat
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-8'); // Hapus state awal
+                        entry.target.classList.add('opacity-100', 'translate-y-0'); // Tambah state akhir
+                        observer.unobserve(entry.target); // Stop observe setelah muncul
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-element').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
     <style>
-        @keyframes progress { from { width: 0; } }
-        .animate-progress { animation: progress 1.5s ease-out forwards; }
-        
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+
+        /* Smooth transition untuk elemen scroll */
+        .scroll-element {
+            transition-property: opacity, transform;
+            transition-duration: 1000ms;
+            transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        }
         
-        @keyframes gradientX { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .animate-gradient-x { background-size: 200% 200%; animation: gradientX 3s ease infinite; }
+        /* Helper delay classes */
+        .transition-delay-200 { transition-delay: 200ms; }
+        .transition-delay-300 { transition-delay: 300ms; }
+        .transition-delay-400 { transition-delay: 400ms; }
     </style>
 
 </body>

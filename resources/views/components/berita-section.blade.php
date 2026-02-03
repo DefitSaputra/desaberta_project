@@ -7,13 +7,13 @@
         
         {{-- Header Section --}}
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div class="max-w-2xl">
+            <div class="max-w-2xl animate-on-scroll" data-anim-delay="0">
                 <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block">Kabar Desa</span>
                 <h2 class="text-3xl md:text-5xl font-bold text-berta-cream font-playfair leading-tight">Berita & Informasi Terbaru</h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-berta-olive to-berta-wood mt-4 rounded-full"></div>
             </div>
             
-            <a href="{{ route('berita.index') }}" class="group flex items-center gap-2 text-berta-sage hover:text-berta-cream transition duration-300 pb-2 border-b border-transparent hover:border-berta-olive">
+            <a href="{{ route('berita.index') }}" class="group flex items-center gap-2 text-berta-sage hover:text-berta-cream transition duration-300 pb-2 border-b border-transparent hover:border-berta-olive animate-on-scroll" data-anim-delay="150">
                 <span class="text-sm font-bold uppercase tracking-wide">Lihat Semua Berita</span>
                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
@@ -22,7 +22,7 @@
         {{-- Grid Berita --}}
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @forelse($berita as $item)
-            <article class="group flex flex-col h-full bg-white/5 border border-white/5 rounded-2xl overflow-hidden hover:border-berta-olive/30 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-berta-olive/10">
+            <article class="group flex flex-col h-full bg-white/5 border border-white/5 rounded-2xl overflow-hidden hover:border-berta-olive/30 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-berta-olive/10 animate-on-scroll" data-anim-delay="{{ $loop->index * 100 }}">
                 
                 {{-- Thumbnail --}}
                 <div class="relative h-56 overflow-hidden">

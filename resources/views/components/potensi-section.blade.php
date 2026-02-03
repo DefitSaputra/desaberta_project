@@ -44,14 +44,14 @@
     ];
 @endphp
 
-<section id="potensi" class="relative py-24 bg-berta-dark overflow-hidden">
+<section id="potensi" class="relative py-24 bg-berta-dark overflow-hidden animate-on-scroll" data-anim-delay="0">
     
     <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay pointer-events-none"></div>
     <div class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-berta-wood/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 animate-on-scroll" data-anim-delay="40">
             <div class="max-w-2xl">
                 <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block animate-pulse">Kearifan Lokal</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-berta-cream mb-4 font-playfair">
@@ -71,7 +71,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
             
             @foreach($items as $item)
-            <div class="group relative rounded-[2rem] overflow-hidden bg-berta-wood/5 border border-berta-sage/10 {{ $item['grid'] }} transition-all duration-500 hover:shadow-2xl hover:shadow-berta-olive/10">
+            <div class="group relative rounded-[2rem] overflow-hidden bg-berta-wood/5 border border-berta-sage/10 {{ $item['grid'] }} transition-all duration-500 hover:shadow-2xl hover:shadow-berta-olive/10 animate-on-scroll" data-anim-delay="{{ $loop->index * 80 }}">
                 
                 <img src="{{ asset($item['image']) }}" alt="{{ $item['title'] }}" 
                      class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
@@ -103,7 +103,7 @@
             </div>
             @endforeach
 
-            <a href="{{ url('/potensi-desa') }}" class="group relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-berta-olive to-berta-wood md:col-span-1 md:row-span-1 flex items-center justify-center text-center p-6 border border-white/10 hover:scale-[1.02] transition duration-300 cursor-pointer">
+            <a href="{{ url('/potensi-desa') }}" class="group relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-berta-olive to-berta-wood md:col-span-1 md:row-span-1 flex items-center justify-center text-center p-6 border border-white/10 hover:scale-[1.02] transition duration-300 cursor-pointer animate-on-scroll" data-anim-delay="480">
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-10 mix-blend-overlay"></div>
                 
                 <div class="relative z-10">

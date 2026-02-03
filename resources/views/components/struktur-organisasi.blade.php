@@ -7,13 +7,13 @@
     ];
 @endphp
 
-<section id="struktur" class="relative py-24 bg-berta-dark overflow-hidden">
+<section id="struktur" class="relative py-24 bg-berta-dark overflow-hidden animate-on-scroll" data-anim-delay="0">
     <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay pointer-events-none"></div>
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-64 bg-berta-olive/10 blur-[100px] rounded-full pointer-events-none"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll" data-anim-delay="20">
             <span class="text-berta-olive font-bold tracking-widest uppercase text-xs mb-2 block animate-pulse">Pemerintahan Desa</span>
             <h2 class="text-3xl md:text-5xl font-bold text-berta-cream mb-6">Struktur Organisasi</h2>
             <div class="w-24 h-1 bg-gradient-to-r from-transparent via-berta-olive to-transparent mx-auto rounded-full"></div>
@@ -22,7 +22,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
             @foreach($pejabat_inti as $p)
-            <div class="group relative">
+            <div class="group relative animate-on-scroll" data-anim-delay="{{ $loop->index * 80 }}">
                 <div class="absolute -inset-0.5 bg-gradient-to-br from-berta-olive to-berta-wood rounded-[2rem] blur opacity-0 group-hover:opacity-50 transition duration-500"></div>
                 
                 <div class="relative h-full bg-berta-dark rounded-[1.8rem] border border-berta-sage/10 overflow-hidden shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col">

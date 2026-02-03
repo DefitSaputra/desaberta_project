@@ -1,11 +1,11 @@
-<section id="peta" class="relative py-24 bg-berta-dark overflow-hidden">
+<section id="peta" class="relative py-24 bg-berta-dark overflow-hidden animate-on-scroll" data-anim-delay="0">
     
     <div class="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
     <div class="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-berta-olive/10 rounded-full blur-[120px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll" data-anim-delay="40">
             <h2 class="text-3xl md:text-4xl font-bold text-berta-cream mb-4">Peta Wilayah Desa</h2>
             <div class="flex items-center justify-center gap-2">
                 <span class="h-[1px] w-12 bg-berta-sage/30"></span>
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="relative rounded-[2.5rem] overflow-hidden border border-berta-sage/10 shadow-2xl bg-berta-wood/5 group">
+        <div class="relative rounded-[2.5rem] overflow-hidden border border-berta-sage/10 shadow-2xl bg-berta-wood/5 group animate-on-scroll" data-anim-delay="120">
             
             <iframe 
                 class="w-full h-[500px] md:h-[600px] grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out filter brightness-90 contrast-125"

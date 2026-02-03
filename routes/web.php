@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Galeri;
 use App\Models\Berita;
 use App\Models\StatistikPenduduk;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,9 +60,7 @@ Route::get('/data-desa', function () {
 
     // Kelompokkan data agar mudah dipanggil di View Grafik
     $dataUmur = $semuaData->where('kategori', 'umur');
-    
-    // [PERBAIKAN] Data Pekerjaan DIURUTKAN dari yang terbanyak
-    // Agar grafik terlihat rapi (Pareto)
+        
     $dataPekerjaan = $semuaData->where('kategori', 'pekerjaan')
                                 ->sortByDesc('jumlah_total')
                                 ->values(); 
@@ -111,5 +110,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/admin-entry', function (Request $request) {
+    // Set a short-lived session flag so the middleware will allow access
+    $request->session()->put('allowed_admin_at', now()->timestamp);
+
+    return redirect('/admin');
+})->name('admin.entry');
 
 require __DIR__.'/auth.php';

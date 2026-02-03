@@ -1,4 +1,4 @@
-<section class="relative py-28 bg-berta-dark overflow-hidden">
+<section class="relative py-28 bg-berta-dark overflow-hidden animate-on-scroll" data-anim-delay="0">
     
     <style>
         .animate-float-slow { animation: float 10s ease-in-out infinite; }
@@ -17,10 +17,10 @@
         
         <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 border-b border-berta-sage/10 pb-8">
             <div class="max-w-2xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-berta-cream mb-4 tracking-tight">
+                <h2 class="text-4xl md:text-5xl font-bold text-berta-cream mb-4 tracking-tight animate-on-load" data-anim-delay="60">
                     Jelajahi <span class="text-berta-olive">Desa Digital</span>
                 </h2>
-                <p class="text-berta-sage/80 text-lg font-light leading-relaxed">
+                <p class="text-berta-sage/80 text-lg font-light leading-relaxed animate-on-load" data-anim-delay="120">
                     Akses transparansi data, profil wilayah, hingga dokumentasi kegiatan desa dalam satu ekosistem digital yang terintegrasi.
                 </p>
             </div>
@@ -35,7 +35,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:h-[500px]">
             
-            <a href="#galeri" class="lg:col-span-2 lg:row-span-2 group relative rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-berta-olive/20 transition-all duration-500 cursor-pointer">
+            {{-- 1. GALERI DESA --}}
+            {{-- [FIX] Link diarahkan ke route('galeri.index') --}}
+            <a href="{{ route('galeri.index') }}" class="lg:col-span-2 lg:row-span-2 group relative rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-berta-olive/20 transition-all duration-500 cursor-pointer animate-on-scroll" data-anim-delay="0">
                 <img src="{{ asset('img/foto1.jpg') }}" alt="Galeri Desa" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1">
                 <div class="absolute inset-0 bg-gradient-to-br from-berta-dark/90 via-berta-dark/60 to-transparent mix-blend-multiply"></div>
                 
@@ -63,7 +65,9 @@
                 </div>
             </a>
 
-            <a href="#profil" class="lg:col-span-1 group relative rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300">
+            {{-- 2. PROFIL DESA --}}
+            {{-- [FIX] Link diarahkan ke route('profil.desa') --}}
+            <a href="{{ route('profil.desa') }}" class="lg:col-span-1 group relative rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300 animate-on-scroll" data-anim-delay="120">
                 <img src="{{ asset('img/oldbalaidesa.jpeg') }}" alt="Profil Desa" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-t from-berta-dark/90 via-berta-dark/50 to-transparent"></div>
                 
@@ -83,7 +87,9 @@
                 </div>
             </a>
 
-            <a href="#statistik" class="lg:col-span-1 group relative rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300">
+            {{-- 3. DATA STATISTIK --}}
+            {{-- [FIX] Link diarahkan ke route('data.desa') --}}
+            <a href="{{ route('data.desa') }}" class="lg:col-span-1 group relative rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300 animate-on-scroll" data-anim-delay="240">
                 <img src="{{ asset('img/datadesa.jpg') }}" alt="Data Desa" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-t from-berta-dark/90 via-berta-dark/50 to-transparent"></div>
 
@@ -103,7 +109,9 @@
                 </div>
             </a>
 
-            <a href="#struktur" class="lg:col-span-2 group relative rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300">
+            {{-- 4. STRUKTUR ORGANISASI --}}
+            {{-- [FIX] Link diarahkan ke route('struktur.lengkap') --}}
+            <a href="{{ route('struktur.lengkap') }}" class="lg:col-span-2 group relative rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300 animate-on-scroll" data-anim-delay="360">
                 <img src="{{ asset('img/balaidesa.jpg') }}" alt="Pemerintahan Desa" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-r from-berta-dark/90 via-berta-dark/60 to-transparent"></div>
 

@@ -18,25 +18,40 @@
 
     @include('components.navbar')
 
-    {{-- Header --}}
-    <section class="relative pt-32 pb-12 bg-berta-dark overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="text-berta-olive font-bold tracking-widest uppercase text-sm mb-3 block">Transparansi Data</span>
-            <h1 class="text-4xl md:text-5xl font-bold text-berta-cream mb-4 font-playfair">Statistik Desa Berta</h1>
-            <p class="text-berta-sage text-lg max-w-2xl mx-auto">Data kependudukan dan demografi desa yang akurat dan terbarukan.</p>
+    {{-- HERO SECTION --}}
+    <div class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        
+        {{-- Background Image Wrapper --}}
+        <div class="absolute inset-0 z-0">
+            <img src="{{ asset('img/datadesa.jpg') }}" 
+                 class="w-full h-full object-cover object-center brightness-50" 
+                 alt="Statistik Desa Berta">
+            
+            <div class="absolute inset-0 bg-gradient-to-b from-berta-dark/60 via-berta-dark/30 to-berta-dark"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
         </div>
-    </section>
+        
+        {{-- Konten Teks Hero --}}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-20">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-white/20 opacity-0 animate-fade-in-down">
+                Transparansi Data
+            </span>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-2xl opacity-0 animate-fade-in-up delay-100">
+                Statistik <span class="text-berta-olive">Desa Berta</span>
+            </h1>
+            <p class="text-white/90 max-w-2xl mx-auto text-lg font-light leading-relaxed opacity-0 animate-fade-in-up delay-200">
+                Data kependudukan dan demografi desa yang akurat, transparan, dan terbarukan sebagai dasar pembangunan.
+            </p>
+        </div>
+    </div>
 
     {{-- SECTION: RINGKASAN TOTAL PENDUDUK --}}
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-16 relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20">
         @php
-            // Hitung manual default
             $totalPenduduk = $dataUmur->sum('jumlah_total'); 
             $totalL = $dataUmur->sum('jumlah_laki');
             $totalP = $dataUmur->sum('jumlah_perempuan');
 
-            // Ambil dari data 'kabupaten' (Desa Berta) jika ada
             $agregatDesa = \App\Models\StatistikPenduduk::where('kategori', 'kabupaten')->first();
             if($agregatDesa) {
                 $totalPenduduk = $agregatDesa->jumlah_total;
@@ -47,19 +62,19 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {{-- Kartu Total --}}
-            <div class="bg-berta-olive p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+            <div class="bg-berta-olive p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300 border border-white/10 scroll-element opacity-0 translate-y-8">
                 <h3 class="text-berta-dark font-bold uppercase text-sm tracking-wider mb-1">Total Penduduk</h3>
                 <span class="text-4xl font-extrabold text-white">{{ number_format($totalPenduduk) }}</span>
                 <span class="text-berta-dark/70 text-sm font-medium block mt-1">Jiwa</span>
             </div>
             {{-- Kartu Laki-laki --}}
-            <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+            <div class="bg-berta-dark/90 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300 scroll-element opacity-0 translate-y-8 transition-delay-200">
                 <h3 class="text-berta-sage font-bold uppercase text-sm tracking-wider mb-1">Laki-laki</h3>
                 <span class="text-4xl font-extrabold text-blue-400">{{ number_format($totalL) }}</span>
                 <span class="text-berta-sage/70 text-sm font-medium block mt-1">Jiwa</span>
             </div>
             {{-- Kartu Perempuan --}}
-            <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300">
+            <div class="bg-berta-dark/90 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition duration-300 scroll-element opacity-0 translate-y-8 transition-delay-300">
                 <h3 class="text-berta-sage font-bold uppercase text-sm tracking-wider mb-1">Perempuan</h3>
                 <span class="text-4xl font-extrabold text-pink-400">{{ number_format($totalP) }}</span>
                 <span class="text-berta-sage/70 text-sm font-medium block mt-1">Jiwa</span>
@@ -67,10 +82,10 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-24">
 
-        {{-- 1. SECTION: KELOMPOK UMUR (Bar Chart) --}}
-        <section>
+        {{-- 1. SECTION: KELOMPOK UMUR --}}
+        <section class="scroll-element opacity-0 translate-y-8">
             <div class="mb-8 border-l-4 border-berta-olive pl-4">
                 <h3 class="text-2xl font-bold text-white font-playfair">Berdasarkan Kelompok Umur</h3>
                 <p class="text-berta-sage text-sm">Sebaran penduduk berdasarkan rentang usia.</p>
@@ -104,8 +119,8 @@
             </div>
         </section>
 
-        {{-- 2. SECTION: PEKERJAAN (Diperbaiki: Tabel & Grafik Tinggi) --}}
-        <section>
+        {{-- 2. SECTION: PEKERJAAN --}}
+        <section class="scroll-element opacity-0 translate-y-8">
             <div class="mb-8 border-l-4 border-berta-olive pl-4">
                 <h3 class="text-2xl font-bold text-white font-playfair">Berdasarkan Pekerjaan</h3>
                 <p class="text-berta-sage text-sm">Mata pencaharian utama penduduk (Diurutkan dari terbanyak).</p>
@@ -113,15 +128,12 @@
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
-                {{-- Grafik (Kiri) --}}
                 <div class="lg:col-span-2 bg-white/5 p-6 rounded-2xl border border-white/10 shadow-lg">
-                    {{-- Container Grafik Tinggi agar muat semua --}}
                     <div class="relative h-[1000px]">
                         <canvas id="chartPekerjaan"></canvas>
                     </div>
                 </div>
 
-                {{-- Tabel (Kanan) --}}
                 <div class="bg-berta-dark border border-white/10 rounded-2xl overflow-hidden max-h-[1000px] overflow-y-auto custom-scrollbar">
                     <table class="w-full text-sm text-left text-berta-sage">
                         <thead class="text-xs text-berta-olive uppercase bg-white/5 sticky top-0 backdrop-blur-md z-10">
@@ -135,7 +147,6 @@
                             <tr class="border-b border-white/5 hover:bg-white/5">
                                 <td class="px-6 py-3 font-medium text-white">
                                     {{ $d->label }}
-                                    {{-- Bar persentase mini --}}
                                     <div class="w-full bg-white/10 rounded-full h-1 mt-1">
                                         <div class="bg-berta-olive h-1 rounded-full" style="width: {{ ($d->jumlah_total / $totalPenduduk) * 100 }}%"></div>
                                     </div>
@@ -151,7 +162,7 @@
         </section>
 
         {{-- 3. SECTION: PENDIDIKAN --}}
-        <section>
+        <section class="scroll-element opacity-0 translate-y-8">
             <div class="mb-8 border-l-4 border-berta-olive pl-4">
                 <h3 class="text-2xl font-bold text-white font-playfair">Pendidikan Terakhir</h3>
                 <p class="text-berta-sage text-sm">Jenjang pendidikan yang telah ditempuh penduduk.</p>
@@ -162,7 +173,7 @@
         </section>
 
         {{-- 4. SECTION: AGAMA & STATUS KAWIN --}}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-element opacity-0 translate-y-8">
             {{-- Agama --}}
             <section class="bg-white/5 p-6 rounded-2xl border border-white/10 shadow-lg flex flex-col">
                 <div class="mb-6 border-l-4 border-berta-olive pl-4">
@@ -191,6 +202,31 @@
 
     @include('components.footer')
 
+    {{-- Script Animasi Scroll --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-element').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
     {{-- SCRIPT GRAPHIC (Chart.js) --}}
     <script>
         Chart.defaults.color = '#a3b18a';
@@ -218,7 +254,7 @@
             options: { responsive: true, maintainAspectRatio: false, scales: { x: { stacked: false }, y: { stacked: false } } }
         });
 
-        // 2. CHART PEKERJAAN (Perbaikan: indexAxis Y, Labels Wajib Muncul)
+        // 2. CHART PEKERJAAN
         new Chart(document.getElementById('chartPekerjaan'), {
             type: 'bar',
             data: {
@@ -233,13 +269,13 @@
                 }]
             },
             options: { 
-                indexAxis: 'y', // Horizontal Chart
+                indexAxis: 'y', 
                 responsive: true, 
-                maintainAspectRatio: false, // Agar ngikutin tinggi container (1000px)
+                maintainAspectRatio: false, 
                 scales: {
                     y: {
                         ticks: {
-                            autoSkip: false, // WAJIB: Jangan sembunyikan label walau sempit
+                            autoSkip: false, 
                             font: { size: 11 }
                         }
                     }
@@ -290,11 +326,30 @@
     </script>
 
     <style>
-        /* Custom Scrollbar untuk Tabel */
+        /* Custom Scrollbar */
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #84cc16; border-radius: 10px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #65a30d; }
+        
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+
+        /* Scroll Element Transition */
+        .scroll-element {
+            transition-property: opacity, transform;
+            transition-duration: 800ms;
+            transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Transition Delays */
+        .transition-delay-200 { transition-delay: 200ms; }
+        .transition-delay-300 { transition-delay: 300ms; }
     </style>
 
 </body>

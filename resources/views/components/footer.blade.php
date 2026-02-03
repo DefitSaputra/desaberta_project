@@ -1,12 +1,14 @@
 <footer id="contact" class="bg-berta-dark border-t border-berta-sage/10 pt-20 pb-10 relative overflow-hidden">
     
+    {{-- Background Elements --}}
     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay pointer-events-none"></div>
     <div class="absolute -top-40 -right-40 w-96 h-96 bg-berta-olive/5 rounded-full blur-[100px] pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
             
-            <div class="lg:col-span-4 space-y-6">
+            {{-- KOLOM 1: IDENTITAS & LOGO --}}
+            <div class="lg:col-span-4 space-y-6 animate-on-scroll" data-anim-delay="0">
                 <div class="flex items-center gap-6">
                     <img src="{{ asset('img/logo.png') }}" class="h-24 w-auto object-contain" alt="Logo Desa Berta">
                     
@@ -37,7 +39,8 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-4 space-y-6">
+            {{-- KOLOM 2: KONTAK --}}
+            <div class="lg:col-span-4 space-y-6 animate-on-scroll" data-anim-delay="100">
                 <h3 class="text-lg font-bold text-berta-cream border-b border-berta-sage/10 pb-4 inline-block">Hubungi Kami</h3>
                 <ul class="space-y-4">
                     <li class="flex items-start gap-4 group">
@@ -61,10 +64,11 @@
                 </ul>
             </div>
 
-            <div class="lg:col-span-4">
+            {{-- KOLOM 3: PETA --}}
+            <div class="lg:col-span-4 animate-on-scroll" data-anim-delay="200">
                 <div class="h-full min-h-[250px] w-full rounded-2xl overflow-hidden border border-berta-sage/20 shadow-lg relative group">
                     <iframe 
-                        src="https://maps.google.com/maps?q=Balai%20Desa%20Berta%20Susukan%20Banjarnegara&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.270632649372!2d109.43899207454864!3d-7.435277773248356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65567008779937%3A0x63346592237000e3!2sBalai%20Desa%20Berta!5e0!3m2!1sid!2sid!4v1708328912345!5m2!1sid!2sid"
                         class="absolute inset-0 w-full h-full grayscale group-hover:grayscale-0 transition duration-700"
                         style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
@@ -80,9 +84,17 @@
 
         </div>
 
+        {{-- BOTTOM BAR (COPYRIGHT & HIDDEN ADMIN) --}}
         <div class="border-t border-berta-sage/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-berta-sage/50">
             <div class="text-center md:text-left">
-                <p>© {{ date('Y') }} Pemerintah Desa Berta. All rights reserved.</p>
+                <p>
+                    © {{ date('Y') }} Pemerintah Desa Berta. All rights reserved.
+                    
+                    {{-- LINK ADMIN TERSEMBUNYI (Di sini letaknya) --}}
+                    <a href="{{ url('/admin-entry') }}" class="ml-2 text-[10px] text-white/5 hover:text-berta-olive transition duration-500 font-medium select-none no-underline" title="Login Admin System">
+                        Administrator
+                    </a>
+                </p>
             </div>
             
             <div class="flex items-center gap-3 bg-white/5 pl-4 pr-3 py-2 rounded-full border border-white/5 hover:bg-white/10 transition group cursor-default">
