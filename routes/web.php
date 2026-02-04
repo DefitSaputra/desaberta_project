@@ -118,4 +118,10 @@ Route::get('/admin-entry', function (Request $request) {
     return redirect('/admin');
 })->name('admin.entry');
 
+// Small JSON endpoint for Filament to poll online users (last 5 minutes)
+Route::get('/filament/stats/online', function () {
+    $count = App\Models\SiteVisit::where('created_at', '>=', now()->subMinutes(5))->distinct('session_id')->count('session_id');
+    return response()->json(['online' => $count]);
+})->middleware('auth');
+
 require __DIR__.'/auth.php';

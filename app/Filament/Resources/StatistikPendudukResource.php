@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Section;
+use Filament\Support\Enums\FontWeight;
 
 class StatistikPendudukResource extends Resource
 {
@@ -25,47 +26,74 @@ class StatistikPendudukResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Input Data Statistik')
+                Section::make('Detail Kategori')
+                    ->description('Tentukan jenis data statistik yang akan diinput.')
                     ->schema([
-                        // 1. Pilih Kategori Data
-                        Forms\Components\Select::make('kategori')
-                            ->label('Jenis Data')
-                            ->options([
-                                'pekerjaan' => 'Pekerjaan',
-                                'status_kawin' => 'Status Perkawinan',
-                                'agama' => 'Agama',
-                                'umur' => 'Kelompok Umur',
-                                'pendidikan' => 'Pendidikan',
-                                'kabupaten' => 'Agregat Penduduk',
-                            ])
-                            ->required()
-                            ->native(false),
-
-                        // 2. Nama Label (Misal: Petani, Islam, 0-4 Tahun)
-                        Forms\Components\TextInput::make('label')
-                            ->label('Nama Kelompok / Kategori')
-                            ->placeholder('Contoh: Petani, Islam, atau 0-4 Tahun')
-                            ->required(),
-
-                        // 3. Input Angka
-                        Forms\Components\Grid::make(3)
+                        Forms\Components\Grid::make(2)
                             ->schema([
+                                // 1. Pilih Kategori
+                                Forms\Components\Select::make('kategori')
+                                    ->label('Jenis Data')
+                                    ->options([
+                                        'pekerjaan' => 'Pekerjaan',
+                                        'status_kawin' => 'Status Perkawinan',
+                                        'agama' => 'Agama',
+                                        'umur' => 'Kelompok Umur',
+                                        'pendidikan' => 'Pendidikan',
+                                        'kabupaten' => 'Agregat Penduduk',
+                                    ])
+                                    ->required()
+                                    ->native(false)
+                                    ->searchable(),
+
+                                // 2. Nama Label
+                                Forms\Components\TextInput::make('label')
+                                    ->label('Nama Kelompok')
+                                    ->placeholder('Contoh: Petani, Islam, 0-4 Tahun')
+                                    ->required(),
+                            ]),
+                    ]),
+
+                Section::make('Data Angka')
+                    ->description('Masukkan jumlah penduduk berdasarkan jenis kelamin. Total akan dihitung otomatis.')
+                    ->schema([
+                        Forms\Components\Group::make()
+                            ->schema([
+                                // 3. Input Laki-laki (Reactive)
                                 Forms\Components\TextInput::make('jumlah_laki')
                                     ->label('Laki-laki')
                                     ->numeric()
-                                    ->default(0),
-                                
+                                    ->default(0)
+                                    ->prefixIcon('heroicon-m-user') // Ikon user
+                                    ->live(onBlur: true) // Update saat pindah kursor
+                                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                                        // Hitung total otomatis
+                                        $l = (int) $get('jumlah_laki');
+                                        $p = (int) $get('jumlah_perempuan');
+                                        $set('jumlah_total', $l + $p);
+                                    }),
+
+                                // 4. Input Perempuan (Reactive)
                                 Forms\Components\TextInput::make('jumlah_perempuan')
                                     ->label('Perempuan')
                                     ->numeric()
-                                    ->default(0),
+                                    ->default(0)
+                                    ->prefixIcon('heroicon-m-user')
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(function (Forms\Get $get, Forms\Set $set) {
+                                        $l = (int) $get('jumlah_laki');
+                                        $p = (int) $get('jumlah_perempuan');
+                                        $set('jumlah_total', $l + $p);
+                                    }),
+                            ])->columns(2),
 
-                                Forms\Components\TextInput::make('jumlah_total')
-                                    ->label('Total (Otomatis)')
-                                    ->numeric()
-                                    ->helperText('Kosongkan jika ingin dihitung otomatis dari L + P')
-                                    ->default(0),
-                            ]),
+                        // 5. Input Total (Read Only / Otomatis)
+                        Forms\Components\TextInput::make('jumlah_total')
+                            ->label('Total Penduduk')
+                            ->numeric()
+                            ->readOnly() // Tidak bisa diedit manual agar akurat
+                            ->helperText('Angka ini terhitung otomatis dari penjumlahan L + P.')
+                            ->extraInputAttributes(['class' => 'bg-gray-100 font-bold text-lg']), // Styling khusus
                     ]),
             ]);
     }
@@ -74,14 +102,16 @@ class StatistikPendudukResource extends Resource
     {
         return $table
             ->columns([
+                // Kategori dengan Badge Warna
                 Tables\Columns\TextColumn::make('kategori')
-                    ->label('Jenis Data')
+                    ->label('Kategori')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'pekerjaan' => 'info',
                         'agama' => 'success',
                         'umur' => 'warning',
                         'pendidikan' => 'danger',
+                        'kabupaten' => 'primary',
                         default => 'gray',
                     })
                     ->formatStateUsing(fn (string $state): string => match ($state) {
@@ -95,33 +125,42 @@ class StatistikPendudukResource extends Resource
                     })
                     ->sortable(),
 
+                // Nama Label
                 Tables\Columns\TextColumn::make('label')
                     ->label('Kelompok')
                     ->searchable()
-                    ->weight('bold'),
+                    ->weight(FontWeight::Bold),
 
+                // Angka Laki-laki
                 Tables\Columns\TextColumn::make('jumlah_laki')
-                    ->label('L')
+                    ->label('Laki-laki')
+                    ->numeric()
                     ->summarize(Tables\Columns\Summarizers\Sum::make()->label('Total L')),
 
+                // Angka Perempuan
                 Tables\Columns\TextColumn::make('jumlah_perempuan')
-                    ->label('P')
+                    ->label('Perempuan')
+                    ->numeric()
                     ->summarize(Tables\Columns\Summarizers\Sum::make()->label('Total P')),
 
+                // Angka Total
                 Tables\Columns\TextColumn::make('jumlah_total')
                     ->label('Total')
-                    ->weight('bold')
+                    ->weight(FontWeight::Bold)
+                    ->color('primary')
                     ->summarize(Tables\Columns\Summarizers\Sum::make()->label('Grand Total')),
             ])
-            ->defaultGroup('kategori') // Mengelompokkan tabel berdasarkan kategori agar rapi
+            ->defaultGroup('kategori') // Fitur grouping bawaan agar tabel rapi per kategori
             ->filters([
                 Tables\Filters\SelectFilter::make('kategori')
+                    ->label('Filter Kategori')
                     ->options([
                         'pekerjaan' => 'Pekerjaan',
                         'status_kawin' => 'Status Perkawinan',
                         'agama' => 'Agama',
                         'umur' => 'Kelompok Umur',
                         'pendidikan' => 'Pendidikan',
+                        'kabupaten' => 'Agregat Penduduk',
                     ]),
             ])
             ->actions([
