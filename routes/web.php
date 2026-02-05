@@ -118,6 +118,15 @@ Route::get('/admin-entry', function (Request $request) {
     return redirect('/admin');
 })->name('admin.entry');
 
+// Rute untuk Sitemap XML (Otomatis)
+Route::get('/sitemap.xml', function () {
+    $berita = \App\Models\Berita::where('is_published', true)->latest()->get();
+    
+    return response()->view('sitemap', [
+        'berita' => $berita,
+    ])->header('Content-Type', 'text/xml');
+});
+
 // Small JSON endpoint for Filament to poll online users (last 5 minutes)
 Route::get('/filament/stats/online', function () {
     $count = App\Models\SiteVisit::where('created_at', '>=', now()->subMinutes(5))->distinct('session_id')->count('session_id');

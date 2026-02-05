@@ -3,7 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="v90LWnpE26CAk8F9__2ZBdgWMeQyNslyFw0ZR3gFVuk" />
     <title>Desa Berta - Alam & Teknologi</title>
+    {{-- SEO UTAMA (Wajib) --}}
+    <title>Website Resmi Desa Berta - Banjarnegara</title>
+    <meta name="description" content="Website Resmi Pemerintah Desa Berta, Kecamatan Susukan, Kabupaten Banjarnegara. Informasi pelayanan publik, transparansi anggaran, potensi desa, dan berita terkini.">
+    <meta name="keywords" content="Desa Berta, Berta Susukan, Banjarnegara, Website Desa, Pemerintah Desa Berta, Berita Berta, Susukan Banjarnegara">
+    <meta name="author" content="Pemerintah Desa Berta">
+    <meta name="robots" content="index, follow">
+
+    {{-- OPEN GRAPH (Agar link bagus saat disebar di WA/Facebook) --}}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:title" content="Desa Berta - Alam & Teknologi">
+    <meta property="og:description" content="Website Resmi Pemerintah Desa Berta. Wujud komitmen transparansi dan pelayanan publik digital.">
+    <meta property="og:image" content="{{ asset('img/balaidesa.jpg') }}"> {{-- Pastikan gambar ini ada --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     {{-- Fonts --}}
