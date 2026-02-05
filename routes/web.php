@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Galeri;
 use App\Models\Berita;
 use App\Models\StatistikPenduduk;
+use App\Models\SiteVisit; // [Ditambahkan] Agar rapi
 use Illuminate\Http\Request;
 
 /*
@@ -120,32 +121,40 @@ Route::get('/admin-entry', function (Request $request) {
 
 // Rute untuk Sitemap XML (Otomatis)
 Route::get('/sitemap.xml', function () {
-    $berita = \App\Models\Berita::where('is_published', true)->latest()->get();
+    $berita = Berita::where('is_published', true)->latest()->get();
     
     return response()->view('sitemap', [
         'berita' => $berita,
     ])->header('Content-Type', 'text/xml');
 });
 
-// --- RUTE DARURAT (Hanya dipakai sekali untuk fix gambar) ---
+// --- RUTE FIX STORAGE (Versi Lebih Kuat untuk Hostinger) ---
 Route::get('/fix-storage', function () {
     $target = storage_path('app/public');
     $link = public_path('storage');
 
-    // Hapus link lama yang mungkin rusak
+    // 1. Cek folder aslinya ada atau tidak
+    if (!file_exists($target)) {
+        return "ERROR: Folder 'storage/app/public' tidak ditemukan. Harap buat folder itu dulu di File Manager.";
+    }
+
+    // 2. Hapus link lama jika ada (biar bersih)
     if (file_exists($link)) { 
         unlink($link); 
     }
 
-    // Buat link baru
-    symlink($target, $link);
-
-    return "Sukses! Folder storage sudah terhubung. Silakan cek gambar kembali.";
+    // 3. Buat link baru dengan penanganan error
+    try {
+        symlink($target, $link);
+        return "BERHASIL! Folder storage sudah terhubung dengan benar.<br>Silakan cek gambar admin kembali.";
+    } catch (\Exception $e) {
+        return "GAGAL membuat symlink: " . $e->getMessage();
+    }
 });
 
 // Small JSON endpoint for Filament to poll online users (last 5 minutes)
 Route::get('/filament/stats/online', function () {
-    $count = App\Models\SiteVisit::where('created_at', '>=', now()->subMinutes(5))->distinct('session_id')->count('session_id');
+    $count = SiteVisit::where('created_at', '>=', now()->subMinutes(5))->distinct('session_id')->count('session_id');
     return response()->json(['online' => $count]);
 })->middleware('auth');
 
