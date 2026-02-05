@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+// 1. TAMBAHAN: Import library Filament
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+
+// 2. TAMBAHAN: Tambahkan "implements FilamentUser" di sini
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -44,5 +49,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // 3. TAMBAHAN: Fungsi Wajib untuk izin akses Admin
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Mengembalikan true artinya SEMUA user yang punya login bisa masuk admin.
+        // Jika ingin membatasi hanya email tertentu, ganti jadi:
+        // return $this->email === 'admin@desaberta.com';
+        
+        return true;
     }
 }
