@@ -127,6 +127,22 @@ Route::get('/sitemap.xml', function () {
     ])->header('Content-Type', 'text/xml');
 });
 
+// --- RUTE DARURAT (Hanya dipakai sekali untuk fix gambar) ---
+Route::get('/fix-storage', function () {
+    $target = storage_path('app/public');
+    $link = public_path('storage');
+
+    // Hapus link lama yang mungkin rusak
+    if (file_exists($link)) { 
+        unlink($link); 
+    }
+
+    // Buat link baru
+    symlink($target, $link);
+
+    return "Sukses! Folder storage sudah terhubung. Silakan cek gambar kembali.";
+});
+
 // Small JSON endpoint for Filament to poll online users (last 5 minutes)
 Route::get('/filament/stats/online', function () {
     $count = App\Models\SiteVisit::where('created_at', '>=', now()->subMinutes(5))->distinct('session_id')->count('session_id');
